@@ -9,7 +9,7 @@ function debounce(func, wait) {
 	let timeout;
 	return (...args) => {
 		const context = this;
-		return new Promise((resolve, reject) => {
+		return new Promise((resolve) => {
 			const later = () => {
 				timeout = null;
 				resolve(func.apply(context, args));

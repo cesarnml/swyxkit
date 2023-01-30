@@ -7,7 +7,6 @@
 
 <!-- https://histoire.dev/guide/svelte3/stories.html -->
 
-
 <Hst.Story title="FeatureCard" layout={{ type: 'grid', width: '100%' }}>
 	<svelte:fragment slot="controls">
 		<Hst.Text bind:value={prefixString} title="prefixString" />

@@ -4,7 +4,6 @@ export let sampleGHComments = [
 	{
 		url: 'https://api.github.com/repos/sw-yx/swyxkit/issues/comments/1008454294',
 		html_url: 'https://github.com/sw-yx/swyxkit/issues/10#issuecomment-1008454294',
-		issue_url: 'https://api.github.com/repos/sw-yx/swyxkit/issues/10',
 		id: 1008454294,
 		node_id: 'IC_kwDOFYx2rM48G8qW',
 		user: {

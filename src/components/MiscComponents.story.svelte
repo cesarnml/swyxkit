@@ -8,7 +8,6 @@
 
 <!-- https://histoire.dev/guide/svelte3/stories.html -->
 
-
 <Hst.Story title="Misc Components" layout={{ type: 'grid', width: '100%' }}>
 	<!-- <Hst.Variant title="Nav">
 		<Nav />
