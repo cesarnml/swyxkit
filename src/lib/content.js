@@ -36,14 +36,14 @@ let allBlogposts = [];
  * @returns {string}
  */
 function slugify(text) {
-    return text
-        .toString()                 // Cast to string (optional)
-        .normalize('NFKD')          // The normalize() using NFKD method returns the Unicode Normalization Form of a given string.
-        .toLowerCase()              // Convert the string to lowercase letters
-        .trim()                     // Remove whitespace from both sides of a string (optional)
-        .replace(/\s+/g, '-')       // Replace spaces with hyphen
-		.replace(/[^\w-]+/g, '')   // Remove all non-word chars
-		.replace(/--+/g, '-')     // Replace multiple hyphen with single hyphen
+	return text
+		.toString() // Cast to string (optional)
+		.normalize('NFKD') // The normalize() using NFKD method returns the Unicode Normalization Form of a given string.
+		.toLowerCase() // Convert the string to lowercase letters
+		.trim() // Remove whitespace from both sides of a string (optional)
+		.replace(/\s+/g, '-') // Replace spaces with hyphen
+		.replace(/[^\w-]+/g, '') // Remove all non-word chars
+		.replace(/--+/g, '-') // Replace multiple hyphen with single hyphen
 		.replace(/(^-|-$)/g, ''); // Remove leading or trailing hyphen
 }
 
@@ -72,7 +72,7 @@ export async function listContent(providedFetch) {
 		new URLSearchParams({
 			state: 'all',
 			labels: GH_PUBLISHED_TAGS.toString(),
-			per_page: '100',
+			per_page: '100'
 		});
 	// pull issues created by owner only if allowed author = repo owner
 	if (APPROVED_POSTERS_GH_USERNAME.length === 1 && APPROVED_POSTERS_GH_USERNAME[0] === REPO_OWNER) {
@@ -219,11 +219,7 @@ function parseIssue(issue) {
 	}
 	let description = data.description ?? content.trim().split('\n')[0];
 	// extract plain text from markdown
-	description = remark()
-		.use(remarkParse)
-		.use(remarkStringify)
-		.processSync(description)
-		.toString();
+	description = remark().use(remarkParse).use(remarkStringify).processSync(description).toString();
 	description = description.replace(/\n/g, ' ');
 	// strip html
 	description = description.replace(/<[^>]*>?/gm, '');
@@ -235,7 +231,8 @@ function parseIssue(issue) {
 
 	/** @type {string[]} */
 	let tags = [];
-	if (data.tags) tags = Array.isArray(data.tags) ? data.tags : data.tags.split(',').map(x => x.trim());
+	if (data.tags)
+		tags = Array.isArray(data.tags) ? data.tags : data.tags.split(',').map((x) => x.trim());
 
 	return {
 		type: 'blog', // futureproof in case you want to add other types of content

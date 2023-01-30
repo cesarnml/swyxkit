@@ -15,12 +15,8 @@ export async function GET({ fetch }) {
 
 	const allBlogs = await listContent(fetch);
 	allBlogs.forEach((post) => {
-
-
 		// extract HTML from markdown
-		const htmlDescription = remark()
-			.use(remarkHTML)
-			.processSync(post.description)
+		const htmlDescription = remark().use(remarkHTML).processSync(post.description);
 
 		feed.item({
 			title: post.title,

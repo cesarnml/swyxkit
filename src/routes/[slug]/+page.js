@@ -5,14 +5,13 @@ import { REPO_URL } from '$lib/siteConfig';
 // instead we set cache control headers
 // export const prerender = true
 
-
 /** @type {import('./$types').PageLoad} */
 export async function load({ params, fetch, setHeaders }) {
 	const slug = params.slug;
 	let [pageData, listData] = await Promise.all([
 		fetch(`/api/blog/${slug}.json`),
 		fetch(`/api/listContent.json`)
-	])
+	]);
 	if (pageData.status > 400) {
 		throw error(pageData.status, await pageData.text());
 	}

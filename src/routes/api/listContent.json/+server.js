@@ -7,8 +7,8 @@ import { listContent } from '$lib/content';
 export async function GET({ fetch, setHeaders }) {
 	let list = await listContent(fetch);
 	list = list.map((item) => {
-		item.description = item.description.replace(/[[\]]/gm, ' ')
-		return item
+		item.description = item.description.replace(/[[\]]/gm, ' ');
+		return item;
 	});
 	setHeaders({
 		'Cache-Control': `max-age=0, s-maxage=${60}` // 1 minute.. for now
